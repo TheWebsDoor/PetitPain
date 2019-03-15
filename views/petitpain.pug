@@ -1,0 +1,64 @@
+extends layout
+
+block title
+  if (petitpain)
+    =petitpain.name
+  else
+    | Perdu
+
+block content
+  .petitpain
+    if (petitpain)
+      .visuel
+        img(src="/medias/img/uploads/petitpain-"+petitpain.slug+".svg")
+      .text
+        =petitpain.punchline
+      .actions
+        a.btn(href="/")
+          i.fa.fa-refresh.bigger-110
+          span.hspacer5
+          | Un autre ?
+        span.hspacer10
+        a.btn(href="/suggest")
+          i.fa.fa-comment.bigger-110
+          span.hspacer5
+          | Proposer un petit pain
+        span.hspacer10
+        a.btn(href="/api")
+          i.fa.fa-book.bigger-110
+          span.hspacer5
+          | API
+      .social
+        ul.share-buttons
+          li
+            a(href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(process.env.URL)+"/petitpain/"+encodeURIComponent(slug_meta)+"&t="+encodeURIComponent(petitpain.punchline) target="_blank" title="Partager sur Facebook")
+              i.fa.fa-facebook-square.fa-2x
+          li
+            a(href="https://twitter.com/intent/tweet?source="+encodeURIComponent(process.env.URL)+"/petitpain/"+encodeURIComponent(slug_meta)+"&text=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name)+"%20:%20"+encodeURIComponent(petitpain.punchline)+"%20"+encodeURIComponent(process.env.URL)+"/petitpain/"+encodeURIComponent(slug_meta) target="_blank" title="Tweeter")
+              i.fa.fa-twitter-square.fa-2x
+          li
+            a(href="https://plus.google.com/share?url="+encodeURIComponent(process.env.URL)+'/petitpain/'+encodeURIComponent(slug_meta) target="_blank" title="Partager sur Google+")
+              i.fa.fa-google-plus-square.fa-2x
+          li
+            a(href="http://www.tumblr.com/share?v=3&u="+encodeURIComponent(process.env.URL)+'/petitpain/'+encodeURIComponent(slug_meta)+"&t=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name)+"&s=" target="_blank" title="Poster sur Tumblr")
+              i.fa.fa-tumblr-square.fa-2x
+          li
+            a(href="http://pinterest.com/pin/create/button/?url="+encodeURIComponent(process.env.URL)+'/petitpain/'+encodeURIComponent(slug_meta)+"&description=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name)+"%20:%20"+encodeURIComponent(petitpain.punchline) target="_blank" title="Pin")
+              i.fa.fa-pinterest-square.fa-2x
+          li
+            a(href="http://www.reddit.com/submit?url="+encodeURIComponent(process.env.URL)+'/petitpain/'+encodeURIComponent(slug_meta)+"&title=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name) target="_blank" title="Envoyer sur Reddit")
+              i.fa.fa-reddit-square.fa-2x
+          li
+            a(href="http://www.linkedin.com/shareArticle?mini=true&url="+encodeURIComponent(process.env.URL)+'/petitpain/'+encodeURIComponent(slug_meta)+"&title=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name)+"&summary=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name)+"%20:%20"+encodeURIComponent(petitpain.punchline)+"&source="+encodeURIComponent(process.env.URL)+'/petitpain/'+encodeURIComponent(slug_meta) target="_blank" title="Partager sur LinkedIn")
+              i.fa.fa-linkedin-square.fa-2x
+          li
+            a(href="http://wordpress.com/press-this.php?u="+encodeURIComponent(process.env.URL)+'/petitpain/'+encodeURIComponent(slug_meta)+"&t=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name)+"&s=Petit%20Pain%20-%20"+encodeURIComponent(petitpain.name)+"%20:%20"+encodeURIComponent(petitpain.punchline) target="_blank" title="Publier sur WordPress")
+              i.fa.fa-wordpress.fa-2x
+    else
+      .visuel
+        img(src="/medias/img/petitpain-lost.svg")
+      .text
+        | Petit pain perdu (404)
+      .actions
+        a.btn.btn-primary(href="/")
+          | Revenir au site

@@ -1,0 +1,45 @@
+extends layout
+
+block title
+  | Proposer un petit pain
+
+block content
+  .petitpain
+    .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3.col-xs-10.col-xs-offset-1
+      if (flash)
+        for message in flash
+          .col-xs-12.alert.alert-dismissible(class='alert-'+message.type)
+            =message.message
+      form(action="/suggest", method="post")
+        .form-group.row.text-center
+          label.control-label.no-padding-right Balance ton idée
+          .spacer15
+          .col-xs-12
+            textarea.form-control.col-xs-12#message(name="message", required="required")
+
+        .form-group.row.text-center
+          label.control-label.no-padding-right Punchline
+          .spacer15
+          .col-xs-12
+            input.form-control.col-xs-12#punchline(type="text", name="punchline", required="required") 
+
+        .spacer20
+
+        .text-center
+          .g-recaptcha(data-sitekey="6LcBDgQTAAAAAKN88u84KFxgCGIdlskOLyqRlocn")
+
+        .spacer20
+
+        .row.form-actions
+          .col-xs-12.text-center
+            a.btn(href="/")
+              i.fa.fa-home.bigger-110
+              span.hspacer5
+              | Retour au site
+            span.hspacer10
+            button.btn.btn-primary(type="submit")
+              i.fa.fa-check.bigger-110
+              span.hspacer5
+              | Envoyer
+
+  script(src='https://www.google.com/recaptcha/api.js')

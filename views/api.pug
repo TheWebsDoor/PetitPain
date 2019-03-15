@@ -1,0 +1,40 @@
+extends layout
+
+block title
+  | API
+
+block content
+  .petitpain.api
+    .visuel
+      img(src="/medias/img/uploads/petitpain-defaut.svg")
+    h1 Petit Pain - API
+    .text-left.lato
+      p Une petite API est en place permettant de récupérer des informations sur tes petits pains préférés. Plusieurs flux sont possibles !
+      br
+      .alert.alert-default
+        .header Liste de tous les petits pains : 
+        .content: a.italic(href=process.env.URL+'/api/list', target='_blank') #{process.env.URL}/api/list
+      .alert.alert-default
+        .header Récupérer un petit pain au hasard : 
+        .content: a.italic(href=process.env.URL+'/api/random', target='_blank') #{process.env.URL}/api/random
+      .alert.alert-default
+        .header Récupérer un petit pain en particulier : 
+        .content
+          a.italic(href='#') #{process.env.URL}/api/petitpain/slug_du_petit_pain
+          br
+          | Exemple : 
+          a.italic(href=process.env.URL+'/api/petitpain/roi', target='_blank') #{process.env.URL}/api/petitpain/roi
+          br
+          a.italic(href=process.env.URL+'/api/list_slugs', target='_blank') Liste des slugs disponibles
+
+    .lobster.white.big Have fun =)
+    .actions
+      a.btn(href="/")
+        i.fa.fa-home.bigger-110
+        span.hspacer5
+        | Revenir au site
+      span.hspacer10
+      a.btn(href="/suggest")
+        i.fa.fa-comment.bigger-110
+        span.hspacer5
+        | Proposer un petit pain
